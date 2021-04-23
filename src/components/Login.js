@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { SET_AUTHED_USER, UNSET_AUTHED_USER } from '../actions/authedUser';
 
-export default class Login extends Component {
+class Login extends Component {
+
+    handleSetAuthedUser = () => {
+        this.props.dispatch (SET_AUTHED_USER ())
+    }
+
     render () {
         return (
             <div>
@@ -12,3 +19,5 @@ export default class Login extends Component {
         )
     }
 }
+
+export default connect () (Login);
