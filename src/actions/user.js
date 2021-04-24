@@ -4,7 +4,7 @@ export const ADD_USER_ANSWER = "ADD_USER_ANSWER";
 
 export function receiveUser (users) {
     return {
-        type : RECEIVE_QUESTION,
+        type : RECEIVE_USER,
         users
     }
 }
