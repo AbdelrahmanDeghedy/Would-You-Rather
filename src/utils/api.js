@@ -1,3 +1,11 @@
+import { 
+  users,
+  questions
+} from './_DATA';
+import {
+  formatQuestion,
+} from './helper';
+
 export function _getUsers () {
     return new Promise((res, rej) => {
       setTimeout(() => res({...users}), 1000)
@@ -11,10 +19,10 @@ export function _getUsers () {
   }
 
   export function getInitialData () {
-    Promise.all (
+    return Promise.all ([
         _getQuestions(),
         _getUsers ()
-    )
+    ])
     .then (([question, user]) => {
       return {
         user,
