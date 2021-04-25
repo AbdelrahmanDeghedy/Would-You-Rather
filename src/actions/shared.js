@@ -38,7 +38,7 @@ export function handleAddAnswer (qid, option) {
             option
         })
         .then (() => {
-            dispatch (addQuestionAnswer (authedUSer, qid, option));
+            dispatch (addQuestionAnswer (authedUser, qid, option));
             dispatch (addUserAnswer (authedUser, qid, option));
         })
     }

@@ -25,8 +25,8 @@ class Login extends Component {
                 <h3 className="login-header">Who Are You?</h3>
                 <form onSubmit={this.handleSubmit}>
                     {console.log(users)}
-                    <select onChange={this.handleChangeSelection} className="login-selector">
-                    {/* <option selected value=""  disabled> Select a User </option> */}
+                    <select defaultValue="" onChange={this.handleChangeSelection} className="login-selector">
+                    <option  value=""  disabled> Select a User </option>
                     {Object.keys(users).map ((uid) =>  
                         <option key={uid} value={uid}> {uid} </option>
                     )
