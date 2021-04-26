@@ -1,15 +1,17 @@
 import { getInitialData, _saveQuestion, _saveQuestionAnswer } from '../utils/api';
 import { receiveQuestion, addQuestion, addQuestionAnswer } from './question';
 import { receiveUser, addUserQuestion, addUserAnswer } from './user';
-
+import { showLoading, hideLoading } from 'react-redux-loading';
 
 
 export function handleInitialData () {
     return (dispatch) => {
+        dispatch (showLoading ())
         return getInitialData ()
         .then (({user, question}) => {
             dispatch (receiveQuestion (question));
             dispatch (receiveUser (user))
+            dispatch (hideLoading ())
         })
     }
 }

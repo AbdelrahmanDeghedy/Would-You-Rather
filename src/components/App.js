@@ -8,7 +8,7 @@ import AnswerQuestion from './AnswerQuestion';
 import NotFound from './NotFound';
 import NewQuestion from './NewQuestion';
 import Leaderboard from './Leaderboard';
-
+import LoadingBar from 'react-redux-loading';
 
 class App extends Component {
     componentDidMount () {
@@ -18,20 +18,23 @@ class App extends Component {
     render () {
         const { authedUser } = this.props;
         return (
-            <Switch>
-             {
-                authedUser === null ? 
-                <Route exact path="/" component={Login} /> :
-                <Fragment>
-                    <Route exact path="/" component={Dashboard} />
-                    <Route exact path="/questions/:id" component={AnswerQuestion} />
-                    <Route exact path="/add" component={NewQuestion} />
-                    <Route exact path="/leaderboard" component={Leaderboard} />
-                    
-                </Fragment>
-            }
-                <Route component={NotFound} />
-            </Switch>
+            <Fragment>
+                <LoadingBar />
+                <Switch>
+                {
+                    authedUser === null ? 
+                    <Route exact path="/" component={Login} /> :
+                    <Fragment>
+                        <Route exact path="/" component={Dashboard} />
+                        <Route exact path="/questions/:id" component={AnswerQuestion} />
+                        <Route exact path="/add" component={NewQuestion} />
+                        <Route exact path="/leaderboard" component={Leaderboard} />
+                        
+                    </Fragment>
+                }
+                    <Route component={NotFound} />
+                </Switch>
+            </Fragment>
         )
     }
 }
