@@ -9,9 +9,10 @@ class Navbar extends Component {
         const { authedUser } = this.props
         return (
             <div className="nav-bar">
-                <div className="title">
-                    Would You Rather
-                </div>
+
+                    <NavLink to="/" exact className="title">
+                        Would You Rather
+                    </NavLink>
 
                 <div className="right-portion">
                     <NavLink to="/leaderboard" exact className="link" activeClassName="link-active">
