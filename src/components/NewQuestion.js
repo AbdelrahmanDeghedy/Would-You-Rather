@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { handleAddQuestion } from '../actions/shared';
 import { withRouter } from 'react-router-dom';
+import Navbar from './Navbar';
 
 class NewQuestion extends Component {
     
@@ -36,23 +37,26 @@ class NewQuestion extends Component {
     render () {
          
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <h3> Would You Rather: </h3>
-                    <label htmlFor="o1">
-                        Option One
-                    </label>
-                    <input onChange={this.handleOptionOne} type="text" name="optionOne" id="o1"/>
+            <Fragment>
+                <Navbar />
+                <div className="add-question-card">
+                    <form onSubmit={this.handleSubmit}>
+                        <h3 className="add-question-header"> Would You Rather: </h3>
+                        <label htmlFor="o1" className="add-question-label">
+                            Option One
+                        </label>
+                        <input className="add-question-input" onChange={this.handleOptionOne} type="text" name="optionOne" id="o1"/>
 
-                    <label htmlFor="o2">
-                        Option One
-                    </label>
-                    <input onChange={this.handleOptionTwo} type="text" name="optionTwo" id="o2"/>
+                        <label className="add-question-label" htmlFor="o2">
+                            Option Two
+                        </label>
+                        <input className="add-question-input" onChange={this.handleOptionTwo} type="text" name="optionTwo" id="o2"/>
 
-                    <button className="btn"> Submit </button>
-                </form>
+                        <button className="btn add-question-btn"> Submit </button>
+                    </form>
 
-            </div>
+                </div>
+            </Fragment>
         )
     }
 }

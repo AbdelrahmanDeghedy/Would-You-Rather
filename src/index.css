@@ -158,4 +158,55 @@ code {
   border: 1px solid orangered;
   border-radius: 5rem;
   cursor: pointer;
+
+  transition: all .3s;
+}
+
+.btn:hover {
+  background-color: orangered;
+}
+
+/* Add Question */
+
+.add-question-card {
+  margin: 2rem;
+  padding : 1rem;
+  border: 1px solid black;
+}
+
+.add-question-label {
+  display: block;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.add-question-input {
+  display: block;
+  width: 100%;
+  height: 1.5rem;
+}
+
+.add-question-btn {
+  margin-top: 1rem;
+  padding-bottom: 1.5rem;
+  
+  transition: all .3s;
+}
+
+
+/* Leaderboard */
+
+.leaderboard-card {
+  border: solid black 1px;
+  border-radius: 5px;
+  margin: 1rem;
+  padding : 1rem;
+}
+
+.leaderboard-card-number {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
 }
