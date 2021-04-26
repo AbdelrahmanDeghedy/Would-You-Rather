@@ -13,7 +13,7 @@ class Logout extends Component {
     render () {
         return (
             <Fragment>
-                <a onClick={this.handleLogout} class="link">
+                <a onClick={this.handleLogout} className="link">
                     Logout
                 </a>
             </Fragment>

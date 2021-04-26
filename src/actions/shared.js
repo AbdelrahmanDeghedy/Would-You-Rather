@@ -14,32 +14,35 @@ export function handleInitialData () {
     }
 }
 
-export function handleAddQuestion (optionOne, optionTwo) {
+export function handleAddQuestion (optionOneText, optionTwoText) {
+    
     return (dispatch, getState) => {
         const { authedUser } = getState (); 
         return _saveQuestion ({
-            optionOne,
-            optionTwo,
+            optionOneText,
+            optionTwoText,
             author : authedUser
         })
         .then ((question) => {
+            console.log("question from reducer: ", question);
             dispatch (addQuestion (question));
             dispatch (addUserQuestion (question.id, authedUser))
         })
     }
 }
 
-export function handleAddAnswer (qid, option) {
+export function handleAddAnswer (qid, answer) {
     return (dispatch, getState) => {
         const { authedUser } = getState ();
+        console.log("shared debug", qid, answer);
         return _saveQuestionAnswer ({
             authedUser,
             qid,
-            option
+            answer
         })
         .then (() => {
-            dispatch (addQuestionAnswer (authedUser, qid, option));
-            dispatch (addUserAnswer (authedUser, qid, option));
+            dispatch (addQuestionAnswer (authedUser, qid, answer));
+            dispatch (addUserAnswer (authedUser, qid, answer));
         })
     }
 }
