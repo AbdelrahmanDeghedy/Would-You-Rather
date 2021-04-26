@@ -21,7 +21,7 @@ class Question extends Component {
 
         return (
             <div className="question-container">
-                <h4 className="cursor-pointer" onClick={this.handleClick} qid={qid} answer={ans} option-one-text={optionOneText} option-two-text={optionTwoText} > Would You rather:</h4>
+                <h4 className="cursor-pointer" onClick={this.handleClick} qid={qid} answer={ans} option-one-text={optionOneText} option-two-text={optionTwoText} > Would You rather: </h4>
                 <ul>
                     <li className={ans === optionOneText ? "active-answer" : ""} > {optionOneText} </li>
                     <li className={ans === optionTwoText ? "active-answer" : ""} > {optionTwoText} </li>

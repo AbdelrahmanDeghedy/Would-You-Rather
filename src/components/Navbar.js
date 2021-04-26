@@ -19,7 +19,7 @@ class Navbar extends Component {
                         Leaderboard
                     </NavLink>
 
-                    <NavLink to="/addQuestion" exact className="link" activeClassName="link-active">
+                    <NavLink to="/add" exact className="link" activeClassName="link-active">
                         Add a Question    
                     </NavLink>
                     

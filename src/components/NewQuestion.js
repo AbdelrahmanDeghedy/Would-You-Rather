@@ -5,8 +5,6 @@ import { withRouter } from 'react-router-dom';
 import Navbar from './Navbar';
 
 class NewQuestion extends Component {
-    
-
     state = {
         optionOne : "",
         optionTwo : "",
