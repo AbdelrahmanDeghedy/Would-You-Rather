@@ -12,6 +12,13 @@ code {
     monospace;
 }
 
+/* utils */
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+
 /* Login Compoennt */
 
 .login-header {
@@ -83,7 +90,7 @@ code {
   display: inline-block;
   position: relative;
   width: 100%;
-
+  margin-bottom: 2rem;
 }
 
 .title {
@@ -94,4 +101,45 @@ code {
 
   margin-top: 1rem;
   margin-left: 1rem;
+}
+
+/* question */
+
+.question-container {
+  border : 1px solid black;
+  border-radius: 5px;
+  margin: 1rem;
+  margin-left: 20rem;
+  padding-left : 2rem;
+  display: inline-block;
+  width: 50%;
+}
+
+.active-answer {
+  color: red;
+}
+
+/* AnswerQuestion Component */
+
+.answer-option {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 3px;
+  display: inline-block;
+  margin-left: 1.5rem;
+  margin-bottom: 2rem;
+  width: 13rem;
+  height: 5rem;
+
+
+  transition: all .5s;
+}
+
+.answer-option-hover:hover {
+  background-color: red;
+}
+
+.active-chosen-answer {
+  background-color: red;
+  color: white;
 }

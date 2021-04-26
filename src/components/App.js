@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { handleInitialData } from '../actions/shared';
 import Login from './Login';
 import Dashboard from './Dashboard';
+import AnswerQuestion from './AnswerQuestion';
 
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
                 <Route exact path="/" component={Login} /> :
                 <Fragment>
                     <Route exact path="/" component={Dashboard} />
+                    <Route exact path="/questions/:id" component={AnswerQuestion} />
                 </Fragment>
             }
             </Fragment>
