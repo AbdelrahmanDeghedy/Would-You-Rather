@@ -4,25 +4,51 @@ import Navbar from './Navbar';
 import Question from './Question';
 
 class Dashboard extends Component {
+    state = {
+        toggle : "unanswered",
+    }
+
+    handleToggle = (e) => {
+        this.setState ({
+            toggle: (this.state.toggle === "unanswered" ? "answered" : "unanswered")
+        }, () => {
+            // enable the other button
+            e.target.disabled = true;
+        })
+        
+        // disable current button
+        document.querySelector (`.${this.state.toggle}`).disabled = false;
+        
+    }
+
+    componentDidMount () {
+        document.querySelector (`.unanswered`).disabled = true;
+    }
+
     render () {
         const { questions, authedUser } = this.props;
         const answeredQuestionsIds = Object.keys (questions).filter ((qid) => ( questions[qid].optionOne.votes.includes (authedUser) ) || (questions[qid].optionTwo.votes.includes (authedUser) ))
         const unansweredQuestionsIds = Object.keys (questions).filter ((qid) => !answeredQuestionsIds.includes (qid));
         
-        console.log("Answered questions: ", answeredQuestionsIds);
-        console.log("unAnswered questions: ", unansweredQuestionsIds);
+
         return (
             <Fragment>
                 <Navbar />
-                <h4>Answered Questions:</h4>
-                {answeredQuestionsIds.map ((qid) => 
-                    <Question key={qid} qid={qid} questions={questions} ans={questions[qid].optionOne.votes.includes (authedUser) ? questions[qid].optionOne.text : questions[qid].optionTwo.text} />
-                )}
+                <div className="toggle-btns">
+                    <button className="toggle-btn answered" onClick={this.handleToggle}> Answered Questions: </button>
+                    <button className="toggle-btn unanswered" onClick={this.handleToggle}> Unanswered Questions: </button>
+                </div>
+                
+                {
+                    this.state.toggle === "answered" ? 
+                    answeredQuestionsIds.map ((qid) => {
+                        return <Question key={qid} qid={qid} questions={questions} ans={questions[qid].optionOne.votes.includes (authedUser) ? questions[qid].optionOne.text : questions[qid].optionTwo.text} /> 
+                    }) : 
+                    unansweredQuestionsIds.map ((qid) => 
+                        <Question key={qid} qid={qid} questions={questions} ans="no" />
+                    )
+                }
 
-                <h4>Unanswered Questions:</h4>
-                {unansweredQuestionsIds.map ((qid) => 
-                    <Question key={qid} qid={qid} questions={questions} ans="no" />
-                )}
             </Fragment>
         )
     }

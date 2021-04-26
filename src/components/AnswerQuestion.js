@@ -33,7 +33,7 @@ class AnswerQuestion extends Component {
 
     render () {
         const { optionOneText, optionTwoText, answer, qid } = this.props.location.state;
-        const { questions } = this.props;
+        const { questions, users } = this.props;
 
         const optionOneLength = questions[qid]?.optionOne?.votes?.length;
         const optionTwoLength = questions[qid]?.optionTwo?.votes?.length;
@@ -46,7 +46,7 @@ class AnswerQuestion extends Component {
             <Navbar />
             <div className="question-container">
                 
-                <h4> Would You rather:</h4>
+                <h4 className="answer-question-header"> Would You rather: <span className="question-asker"> Asked by: {users[questions[qid].author].name} </span></h4>
                 {answer === optionOneText && (
                     <Fragment>
                         <button disabled className="answer-option cursor-pointer active-chosen-answer"> {optionOneText} </button>
@@ -81,6 +81,7 @@ function mapStateToProps (state) {
     return {
         questions : state.question,
         authedUser : state.authedUser,
+        users : state.user,
     }
 }
 

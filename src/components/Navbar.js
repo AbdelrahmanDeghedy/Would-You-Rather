@@ -6,7 +6,7 @@ import Logout from './Logout';
 class Navbar extends Component {
     render () {
 
-        const { authedUser } = this.props
+        const { authedUser, users } = this.props
         return (
             <div className="nav-bar">
 
@@ -19,11 +19,11 @@ class Navbar extends Component {
                         Leaderboard
                     </NavLink>
 
-                    <NavLink to="/addQuestion" exact className="link" activeClassName="link-active">
+                    <NavLink to="/add" exact className="link" activeClassName="link-active">
                         Add a Question    
                     </NavLink>
                     
-                    {authedUser}
+                    {users[authedUser].name}
                     
                     <Logout />
                 </div>
@@ -36,6 +36,7 @@ class Navbar extends Component {
 function mapStateToProps (state) {
     return {
         authedUser : state.authedUser,
+        users : state.user,
     }
 }
 
