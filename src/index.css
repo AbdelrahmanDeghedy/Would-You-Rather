@@ -18,6 +18,14 @@ code {
   cursor: pointer;
 }
 
+.move-right {
+  margin-left: 1rem;
+}
+
+.different-color-text {
+  color: rgb(187, 138, 48);
+}
+
 /* Login Compoennt */
 
 .login-header {
@@ -217,6 +225,16 @@ code {
   text-align: center;
   font-size: 1.5rem;
   font-weight: 700;
+  margin-bottom: 3rem;
+}
+
+.leaderboard-img-container {
+  display: inline-block;
+  position: relative;
+  width: 2rem;
+  height: 1rem;
+  left : 3rem;
+  top:-6rem;
 }
 
 /* Dashboard */
@@ -240,3 +258,21 @@ code {
   margin-left: 50%;
   transform: translateX(-35%);
 }
+
+/*IMAGE */
+
+.img {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 5rem;
+  position: absolute;
+  left:-.5rem;
+  top:-.5rem;
+}
+.img-container {
+  display: inline-block;
+  position: relative;
+  width: 2rem;
+  height: 1rem;
+}
+

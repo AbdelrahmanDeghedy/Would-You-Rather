@@ -5,8 +5,9 @@ import Logout from './Logout';
 
 class Navbar extends Component {
     render () {
-
+        
         const { authedUser, users } = this.props
+        console.log("avatar is: ", users[authedUser].avatarURL);
         return (
             <div className="nav-bar">
 
@@ -22,6 +23,14 @@ class Navbar extends Component {
                     <NavLink to="/add" exact className="link" activeClassName="link-active">
                         Add a Question    
                     </NavLink>
+                    
+                    <div className="img-container">
+                        <img 
+                            src={users[authedUser].avatarURL}
+                            alt={`${users[authedUser].name}'s Image`}
+                            className="img"
+                        />
+                    </div>
                     
                     {users[authedUser].name}
                     
