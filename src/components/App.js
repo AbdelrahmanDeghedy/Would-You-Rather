@@ -23,7 +23,7 @@ class App extends Component {
                 <Switch>
                 {
                     authedUser === null ? 
-                    <Route exact path="/" component={Login} /> :
+                    <Route component={Login} /> :
                     <Fragment>
                         <Route exact path="/" component={Dashboard} />
                         <Route exact path="/questions/:id" component={AnswerQuestion} />
