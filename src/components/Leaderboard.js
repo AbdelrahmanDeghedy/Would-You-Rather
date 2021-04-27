@@ -23,7 +23,7 @@ class Leaderboard extends Component {
                 {
                     userScore.map ((el, index) => {
                         return (
-                        <div className="leaderboard-card"> 
+                        <div className="leaderboard-card" key={el[1]}> 
                             <div className="leaderboard-card-number"> {index + 1} </div>
                             <div> Name: {users[el[1]].name} </div>
                             <div> Question Asked: {users[el[1]].questions.length}</div>

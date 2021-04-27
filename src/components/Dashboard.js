@@ -30,6 +30,24 @@ class Dashboard extends Component {
         const answeredQuestionsIds = Object.keys (questions).filter ((qid) => ( questions[qid].optionOne.votes.includes (authedUser) ) || (questions[qid].optionTwo.votes.includes (authedUser) ))
         const unansweredQuestionsIds = Object.keys (questions).filter ((qid) => !answeredQuestionsIds.includes (qid));
         
+        // sort descending based on the time stamp (to show the newly added questions first)
+        answeredQuestionsIds.sort ((x, y) => {
+            if (questions[x].timestamp > questions[y].timestamp) {
+                return -1;
+            }
+            else {
+                return 1;
+            }
+        });
+
+        unansweredQuestionsIds.sort ((x, y) => {
+            if (questions[x].timestamp > questions[y].timestamp) {
+                return -1;
+            }
+            else {
+                return 1;
+            }
+        });
 
         return (
             <Fragment>

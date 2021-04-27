@@ -10,7 +10,7 @@ class AnswerQuestion extends Component {
         const selectedOption = e.target.textContent.trim ();
         
         const { dispatch, authedUser } = this.props;
-        const { optionOneText, optionTwoText, qid } = this.props.location.state;
+        const { optionOneText, optionTwoText, qid, answer } = this.props.location.state;
         const { questions } = this.props;
         let option = "";
         
@@ -20,14 +20,18 @@ class AnswerQuestion extends Component {
         else if (selectedOption === optionTwoText) {
             option = "optionTwo";
         }
-        console.log(option);
+        console.log("answer is: ", questions[qid][option].text);
 
         questions[qid][option].votes.push (authedUser);
         
         // Update the API
         dispatch (handleAddAnswer(qid, option));
 
-        this.props.history.push ('/');
+        
+        this.props.history.replace ({
+            pathname : `/questions/${qid}`,
+            state : {optionOneText, optionTwoText, answer :  questions[qid][option].text, qid}
+        });
         
     }
 
