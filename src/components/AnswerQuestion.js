@@ -3,6 +3,8 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Navbar from './Navbar'
 import { handleAddAnswer } from '../actions/shared';
+import NotFound from './NotFound';
+
 
 class AnswerQuestion extends Component {
 
@@ -36,6 +38,12 @@ class AnswerQuestion extends Component {
     }
 
     render () {
+
+        // Catch invalid questions urls
+        if (!this.props.location.state) {
+            return <NotFound />
+        }
+
         const { optionOneText, optionTwoText, answer, qid } = this.props.location.state;
         const { questions, users } = this.props;
 
