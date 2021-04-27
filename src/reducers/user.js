@@ -8,7 +8,7 @@ export default function users (state = {}, action) {
             [authedUser] : {
                 ...state[authedUser],
                 answers : {
-                    ...state[authedUser].answer,
+                    ...state[authedUser].answers,
                     [qid] : answer,
                 }
             }

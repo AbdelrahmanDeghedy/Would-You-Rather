@@ -28,6 +28,14 @@ class Leaderboard extends Component {
                             <div> Name: {users[el[1]].name} </div>
                             <div> Question Asked: {users[el[1]].questions.length}</div>
                             <div> Question Answered: {Object.keys (users[el[1]].answers).length}</div>
+                            
+                            <div className="leaderboard-img-container">
+                            <img 
+                                src={users[el[1]].avatarURL}
+                                alt={`${users[el[1]].name}'s Image`}
+                                className="img"
+                            />
+                        </div>
                         </div>
                     )})
                 }
@@ -40,6 +48,7 @@ class Leaderboard extends Component {
 function mapStateToProps (state) {
     return {
         users : state.user,
+        authedUser : state.authedUser,
     }
 }
 

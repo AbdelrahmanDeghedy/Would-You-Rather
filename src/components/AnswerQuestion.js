@@ -3,6 +3,8 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Navbar from './Navbar'
 import { handleAddAnswer } from '../actions/shared';
+import NotFound from './NotFound';
+
 
 class AnswerQuestion extends Component {
 
@@ -10,7 +12,7 @@ class AnswerQuestion extends Component {
         const selectedOption = e.target.textContent.trim ();
         
         const { dispatch, authedUser } = this.props;
-        const { optionOneText, optionTwoText, qid, answer } = this.props.location.state;
+        const { optionOneText, optionTwoText, qid } = this.props.location.state;
         const { questions } = this.props;
         let option = "";
         
@@ -36,6 +38,12 @@ class AnswerQuestion extends Component {
     }
 
     render () {
+
+        // Catch invalid questions urls
+        if (!this.props.location.state) {
+            return <NotFound />
+        }
+
         const { optionOneText, optionTwoText, answer, qid } = this.props.location.state;
         const { questions, users } = this.props;
 
@@ -50,12 +58,25 @@ class AnswerQuestion extends Component {
             <Navbar />
             <div className="question-container">
                 
-                <h4 className="answer-question-header"> Would You rather: <span className="question-asker"> Asked by: {users[questions[qid].author].name} </span></h4>
+                <h4 className="answer-question-header"> Would You rather: 
+                    <span className="question-asker"> Asked by: 
+                        <div className="img-container move-right">
+                            <img 
+                                src={users[questions[qid].author].avatarURL}
+                                alt={`${users[questions[qid].author].name}'s Image`}
+                                className="img"
+                            />
+                        </div>
+                    </span>
+                </h4>
+                
+
                 {answer === optionOneText && (
                     <Fragment>
                         <button disabled className="answer-option cursor-pointer active-chosen-answer"> {optionOneText} </button>
                         <button disabled className="answer-option cursor-pointer "> {optionTwoText} </button>
-                        <div> First Option ({optionOnePercentage}%) / Second Option ({optionTwoPercentage}%) </div>
+                        <div> First Option <span className="different-color-text"> ({optionOnePercentage.toFixed (1)}%) </span> / Second Option <span className="different-color-text"> ({optionTwoPercentage.toFixed (1)}%)</span> </div>
+                        <div> First Option: <span className="different-color-text"> {optionOneLength} votes</span> / Second Option: <span className="different-color-text"> {optionTwoLength} votes</span> </div>
                     </Fragment>
                 )}
 
@@ -63,7 +84,8 @@ class AnswerQuestion extends Component {
                     <Fragment>
                         <button disabled className="answer-option cursor-pointer "> {optionOneText} </button>
                         <button disabled className="answer-option cursor-pointer active-chosen-answer"> {optionTwoText} </button>
-                        <div> First Option ({optionOnePercentage}%) / Second Option ({optionTwoPercentage}%) </div>
+                        <div> First Option <span className="different-color-text"> ({optionOnePercentage.toFixed (1)}%) </span> / Second Option <span className="different-color-text"> ({optionTwoPercentage.toFixed (1)}%)</span> </div>
+                        <div> First Option: <span className="different-color-text"> {optionOneLength} votes</span> / Second Option: <span className="different-color-text"> {optionTwoLength} votes</span> </div>
                     </Fragment>
                 )}
 
