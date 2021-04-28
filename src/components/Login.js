@@ -15,6 +15,10 @@ class Login extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault ();
+        if (this.state.selectedUser === "") {
+            alert ('Please logi with a valid user!');
+            return;
+        }
         this.props.dispatch (setAuthedUser (this.state.selectedUser))
     }
 
@@ -24,7 +28,6 @@ class Login extends Component {
             <div>
                 <h3 className="login-header">Who Are You?</h3>
                 <form onSubmit={this.handleSubmit}>
-                    {console.log(users)}
                     <select defaultValue="" onChange={this.handleChangeSelection} className="login-selector">
                     <option  value=""  disabled> Select a User </option>
                     {Object.keys(users).map ((uid) =>  
@@ -33,7 +36,7 @@ class Login extends Component {
                     }
                     </select>
 
-                    <button className="login-btn"> Submit </button>
+                    <button className="login-btn btn"> Submit </button>
                 </form>
             </div>
         )
