@@ -2,6 +2,11 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+![gif from the app](https://user-images.githubusercontent.com/68364202/116428421-2f050500-a845-11eb-9473-94ac8e4f01ec.gif)
+
+
+
 ## Project Description
 
 - A React app that lets a user play the “Would You Rather?” game.
