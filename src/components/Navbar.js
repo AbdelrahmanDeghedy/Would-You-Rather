@@ -24,7 +24,7 @@ class Navbar extends Component {
                         Add a Question    
                     </NavLink>
                     
-                    <div className="img-container">
+                    <div className="img-container navbar-img">
                         <img 
                             src={users[authedUser].avatarURL}
                             alt={`${users[authedUser].name}'s Image`}
@@ -35,7 +35,10 @@ class Navbar extends Component {
                     {users[authedUser].name}
                     
                     <Logout />
+
                 </div>
+            
+                <hr className="horizontal-line"/>
 
             </div>
         )
