@@ -7,8 +7,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   background-image: linear-gradient(100deg, #f0ece9 40%,#decdc1 60%);
-  /* height: 100vh; */
-  /* background-image: linear-gradient(135deg, #f0ece9 ,#decdc1); */
 }
 
 code {
