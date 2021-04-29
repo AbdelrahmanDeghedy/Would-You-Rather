@@ -25,7 +25,7 @@ class App extends Component {
                     authedUser === null ? 
                     <Route component={Login} /> :
                     <Fragment>
-                        <Route exact path="/" component={Dashboard} />
+                        <Route exact path="/Would-You-Rather" component={Dashboard} />
                         <Route exact path="/questions/:id" component={AnswerQuestion} />
                         <Route exact path="/add" component={NewQuestion} />
                         <Route exact path="/leaderboard" component={Leaderboard} />

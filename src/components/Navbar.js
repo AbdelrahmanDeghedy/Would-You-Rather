@@ -11,7 +11,7 @@ class Navbar extends Component {
         return (
             <div className="nav-bar">
 
-                    <NavLink to="/" exact className="title">
+                    <NavLink to="/Would-You-Rather" exact className="title">
                         Would You Rather
                     </NavLink>
 
