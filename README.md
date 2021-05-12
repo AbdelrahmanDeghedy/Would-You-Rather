@@ -3,7 +3,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 
-![gif from the app](https://user-images.githubusercontent.com/68364202/116428421-2f050500-a845-11eb-9473-94ac8e4f01ec.gif)
+![1](https://user-images.githubusercontent.com/68364202/117904662-10395080-b2d2-11eb-994d-f2eaf072ce12.png)
+
 
 
 
