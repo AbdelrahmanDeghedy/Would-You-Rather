@@ -1,52 +1,61 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setAuthedUser } from '../actions/authedUser';
+import Button from './Button';
 
 class Login extends Component {
     state = {
-        selectedUser : "",
+        selectedUser: "",
     }
 
     // Controlled Component
     handleChangeSelection = (e) => {
-        e.preventDefault ();
-        this.setState ({selectedUser : e.target.value})
+        e.preventDefault();
+        this.setState({ selectedUser: e.target.value })
     }
 
     handleSubmit = (e) => {
-        e.preventDefault ();
+        e.preventDefault();
         if (this.state.selectedUser === "") {
-            alert ('Please logi with a valid user!');
+            alert('Please login with a valid user!');
             return;
         }
-        this.props.dispatch (setAuthedUser (this.state.selectedUser))
+        this.props.dispatch(setAuthedUser(this.state.selectedUser))
     }
 
-    render () {
+
+    // test = () => {
+    //     alert("TEST")
+    // }
+
+    render() {
         const { users } = this.props;
         return (
-            <div>
+            <div className="login-container">
                 <h3 className="login-header">Who Are You?</h3>
-                <form onSubmit={this.handleSubmit}>
+                <form>
                     <select defaultValue="" onChange={this.handleChangeSelection} className="login-selector">
-                    <option  value=""  disabled> Select a User </option>
-                    {Object.keys(users).map ((uid) =>  
-                        <option key={uid} value={uid}> {uid} </option>
-                    )
-                    }
+                        <optgroup>
+                            <option value="" disabled> Select a User </option>
+                            {
+                                Object.keys(users).map((uid) =>
+                                    <option key={uid} value={uid}> {uid} </option>
+                                )
+                            }
+                        </optgroup>
                     </select>
 
-                    <button className="login-btn btn"> Submit </button>
                 </form>
+                <Button content="Submit" handler={this.handleSubmit} />
             </div>
         )
     }
 }
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
     return {
-        users : state.user,
+        users: state.user,
     }
 }
 
-export default connect (mapStateToProps) (Login);
+export default connect(mapStateToProps)(Login);

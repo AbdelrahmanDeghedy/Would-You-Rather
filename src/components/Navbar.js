@@ -1,55 +1,58 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Logout from './Logout';
 
 class Navbar extends Component {
-    render () {
-        
+    render() {
+
         const { authedUser, users } = this.props
         console.log("avatar is: ", users[authedUser].avatarURL);
         return (
-            <div className="nav-bar">
+            <Fragment>
 
-                    <NavLink to="/Would-You-Rather" exact className="title">
+                <div className="nav-bar">
+
+                    <NavLink to="/" exact className="title">
                         Would You Rather
                     </NavLink>
 
-                <div className="right-portion">
-                    <NavLink to="/leaderboard" exact className="link" activeClassName="link-active">
-                        Leaderboard
-                    </NavLink>
+                    <div className="right-portion">
+                        <NavLink to="/leaderboard" exact className="link" activeClassName="link-active">
+                            Leaderboard
+                        </NavLink>
 
-                    <NavLink to="/add" exact className="link" activeClassName="link-active">
-                        Add a Question    
-                    </NavLink>
-                    
-                    <div className="img-container navbar-img">
-                        <img 
-                            src={users[authedUser].avatarURL}
-                            alt={`${users[authedUser].name}'s Image`}
-                            className="img"
-                        />
+                        <NavLink to="/add" exact className="link" activeClassName="link-active">
+                            Add a Question
+                        </NavLink>
+
+
+                        <div className="navbar-user">
+                            <div className="navbar-img">
+                                <img
+                                    src={users[authedUser].avatarURL}
+                                    alt={`${users[authedUser].name}'s`}
+                                    className="navbar-img-itself"
+                                />
+                            </div>
+                            {users[authedUser].name}
+                        </div>
+
+                        <Logout />
+
                     </div>
-                    
-                    {users[authedUser].name}
-                    
-                    <Logout />
-
                 </div>
-            
-                <hr className="horizontal-line"/>
-
-            </div>
+                <hr className="horizontal-line" />
+            </Fragment>
         )
     }
 }
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
     return {
-        authedUser : state.authedUser,
-        users : state.user,
+        authedUser: state.authedUser,
+        users: state.user,
     }
 }
 
-export default connect (mapStateToProps) (Navbar)
+export default connect(mapStateToProps)(Navbar)

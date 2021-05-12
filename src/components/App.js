@@ -11,27 +11,27 @@ import Leaderboard from './Leaderboard';
 import LoadingBar from 'react-redux-loading';
 
 class App extends Component {
-    componentDidMount () {
-        this.props.dispatch (handleInitialData ())
+    componentDidMount() {
+        this.props.dispatch(handleInitialData())
     }
 
-    render () {
+    render() {
         const { authedUser } = this.props;
         return (
             <Fragment>
                 <LoadingBar />
                 <Switch>
-                {
-                    authedUser === null ? 
-                    <Route component={Login} /> :
-                    <Fragment>
-                        <Route exact path="/Would-You-Rather" component={Dashboard} />
-                        <Route exact path="/questions/:id" component={AnswerQuestion} />
-                        <Route exact path="/add" component={NewQuestion} />
-                        <Route exact path="/leaderboard" component={Leaderboard} />
-                        
-                    </Fragment>
-                }
+                    {
+                        authedUser === null ?
+                            <Route component={Login} /> :
+                            <Switch>
+                                <Route exact path="/" component={Dashboard} />
+                                <Route exact path="/questions/:id" component={AnswerQuestion} />
+                                <Route exact path="/add" component={NewQuestion} />
+                                <Route exact path="/leaderboard" component={Leaderboard} />
+                                <Route component={NotFound} />
+                            </Switch>
+                    }
                     <Route component={NotFound} />
                 </Switch>
             </Fragment>
@@ -39,10 +39,10 @@ class App extends Component {
     }
 }
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
     return {
-        authedUser : state.authedUser,
+        authedUser: state.authedUser,
     }
 }
 
-export default connect (mapStateToProps) (App);
+export default connect(mapStateToProps)(App);

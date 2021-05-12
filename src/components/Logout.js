@@ -4,15 +4,15 @@ import { withRouter, Link } from 'react-router-dom';
 import { unsetAuthedUser } from '../actions/authedUser';
 
 class Logout extends Component {
-    
+
     handleLogout = () => {
-        this.props.dispatch (unsetAuthedUser ());
+        this.props.dispatch(unsetAuthedUser());
     }
-    
-    render () {
+
+    render() {
         return (
             <Fragment>
-                <Link to="/" onClick={this.handleLogout} className="link">
+                <Link to="/" onClick={this.handleLogout} className="link logout">
                     Logout
                 </Link>
             </Fragment>
@@ -20,4 +20,4 @@ class Logout extends Component {
     }
 }
 
-export default withRouter (connect () (Logout));
+export default withRouter(connect()(Logout));
